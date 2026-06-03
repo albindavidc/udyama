@@ -4,6 +4,7 @@ import { DashboardBento } from './components/DashboardBento';
 import { LayerProgressionTree } from './components/LayerProgressionTree';
 import { PillarMatrix } from './components/PillarMatrix';
 import { HomeView } from './components/HomeView';
+import { SplashScreen } from './components/SplashScreen';
 
 function HeaderStats() {
   const { currentLayer } = useProgress();
@@ -20,18 +21,19 @@ function HeaderStats() {
 
 export default function App() {
   const [view, setView] = useState<'home' | 'level' | 'matrix'>('home');
+  const [showSplash, setShowSplash] = useState(true);
 
   return (
     <ProgressProvider>
-      <div className="min-h-screen pb-24 px-4 sm:px-6 w-full max-w-[1240px] mx-auto pt-6 flex flex-col gap-6">
-        
-        <header className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-6 md:px-8 py-4 shadow-2xl gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(6,182,212,0.5)]">
-              <span className="text-black font-black text-xl">U</span>
+      <SplashScreen isVisible={showSplash} onComplete={() => setShowSplash(false)} />
+      
+      {!showSplash && (
+        <div className="animate-in fade-in duration-1000 ease-out min-h-screen pb-24 px-4 sm:px-6 w-full max-w-[1240px] mx-auto pt-6 flex flex-col gap-6">
+          
+          <header className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-6 md:px-8 py-4 shadow-2xl gap-6">
+            <div className="flex items-center gap-3">
+              <h1 className="text-2xl font-bold tracking-tighter uppercase italic">udyama</h1>
             </div>
-            <h1 className="text-2xl font-bold tracking-tighter uppercase italic">udyama</h1>
-          </div>
           
           <nav className="flex gap-4 md:gap-8 text-xs font-semibold tracking-widest uppercase text-white/50">
             <button 
@@ -84,6 +86,7 @@ export default function App() {
         </main>
         
       </div>
+      )}
     </ProgressProvider>
   );
 }

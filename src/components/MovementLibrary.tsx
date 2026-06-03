@@ -11,11 +11,11 @@ const tiersData = [
     accentColor: "#00e5ff",
     image: "https://images.unsplash.com/photo-1598971639058-fab3c3109a00?q=80&w=800&auto=format&fit=crop", // Fallback working image
     categories: [
-      { name: "PUSH", icon: Dumbbell, moves: ["Wall Push-Ups", "Incline Push-Ups", "Push-Ups", "Diamond Push-Ups", "Pike Push-Ups"] },
+      { name: "PUSH", icon: Dumbbell, moves: ["Wall Push-Ups", "Incline Push-Ups", "Push-Ups (Chaturanga Dandasana)", "Diamond Push-Ups", "Pike Push-Ups"] },
       { name: "PULL", icon: ArrowUp, moves: ["Dead Hangs", "Australian Rows", "Band-Assisted Pull-Ups"] },
-      { name: "LEGS", icon: Activity, moves: ["Assisted Squats", "Glute Bridges", "Bodyweight Squats", "Reverse Lunges", "Step-Ups"] },
-      { name: "CORE", icon: Target, moves: ["Bird Dogs", "Planks", "Hollow Hold", "Leg Raises", "Side Planks"] },
-      { name: "MOBILITY & SKILLS", icon: Compass, moves: ["Shoulder Mobility", "Hip Mobility", "Ankle Mobility", "Thoracic Spine Mobility", "Proper Breathing", "Core Bracing", "Scapular Control", "Basic Body Alignment"] },
+      { name: "LEGS", icon: Activity, moves: ["Assisted Squats", "Glute Bridges (Setu Bandha Sarvangasana)", "Bodyweight Squats (Utkatasana / Malasana)", "Reverse Lunges (Anjaneyasana)", "Step-Ups"] },
+      { name: "CORE", icon: Target, moves: ["Bird Dogs (Dandayamana Bharmanasana)", "Planks (Phalakasana / Kumbhakasana)", "Hollow Hold (Ardha Navasana)", "Leg Raises (Uttanpadasana)", "Side Planks (Vasisthasana)"] },
+      { name: "MOBILITY & SKILLS", icon: Compass, moves: ["Shoulder Mobility", "Hip Mobility", "Ankle Mobility", "Thoracic Spine Mobility", "Proper Breathing (Pranayama)", "Core Bracing (Uddiyana Bandha)", "Scapular Control", "Basic Body Alignment"] },
     ]
   },
   {
@@ -29,7 +29,7 @@ const tiersData = [
       { name: "PUSH", icon: Dumbbell, moves: ["Dips", "Archer Push-Ups", "Headstand (Sirsasana)", "Handstand (Adho Mukha Vrksasana)", "Handstand Push-Up Negatives", "Pseudo Planche Push-Ups"] },
       { name: "PULL", icon: ArrowUp, moves: ["Active Hangs", "Chin-Ups", "Pull-Ups", "Muscle-Up Transitions", "Front Lever Tucks", "Back Lever Tucks"] },
       { name: "LEGS", icon: Activity, moves: ["Shrimp Squats", "Pistol Squat Progressions", "Weighted Pistol Squats", "Nordic Curls"] },
-      { name: "CORE", icon: Target, moves: ["L-Sit Progressions", "Advanced L-Sits", "Dragon Flag Negatives", "Dragon Flags"] },
+      { name: "CORE", icon: Target, moves: ["L-Sit Progressions (Brahmacharyasana / Tolasana)", "Advanced L-Sits", "Dragon Flag Negatives", "Dragon Flags"] },
     ]
   },
   {
@@ -38,12 +38,12 @@ const tiersData = [
     sublabel: "LAYERS 5, 6 & 7: MASTERY",
     description: "Represents peak neuromuscular control, extreme relative strength, and the seamless combination of balance and power.",
     accentColor: "#00e5ff",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1599058917212-d750089bc07e?q=80&w=800&auto=format&fit=crop",
     categories: [
-      { name: "PUSH", icon: Dumbbell, moves: ["Straddle Planche", "Full Planche", "Planche Push-Ups", "Freestanding HSPU", "90 Degree Push-Ups", "Maltese"] },
+      { name: "PUSH", icon: Dumbbell, moves: ["Straddle Planche (Mayurasana)", "Full Planche (Bakasana)", "Planche Push-Ups", "Freestanding HSPU", "90 Degree Push-Ups", "Maltese"] },
       { name: "PULL", icon: ArrowUp, moves: ["Front Lever", "One Arm Front Lever", "Bar Muscle-Ups", "One Arm Pull-Up Negatives", "One Arm Pull-Up", "Iron Cross", "Victorian Cross"] },
       { name: "LEGS", icon: Activity, moves: ["Advanced Nordic Curls", "Explosive Bounds", "Plyo Lunges", "One Arm Pistol Squat", "Elite Power Endurance"] },
-      { name: "CORE", icon: Target, moves: ["V-Sits", "Human Flag Progressions", "Full Human Flag", "Manna", "Manna Mastery"] },
+      { name: "CORE", icon: Target, moves: ["V-Sits (Paripurna Navasana)", "Human Flag Progressions", "Full Human Flag", "Manna", "Manna Mastery"] },
     ]
   }
 ];
@@ -180,6 +180,21 @@ export function MovementLibrary() {
         </div>
       </div>
 
+      {/* Naming Convention Guide */}
+      <div className="mb-10 p-5 bg-gradient-to-r from-purple-900/10 to-transparent border border-purple-500/20 rounded-2xl flex flex-col sm:flex-row gap-4 items-start sm:items-center text-purple-200">
+        <div className="p-3 bg-purple-500/10 border border-purple-500/20 rounded-xl shrink-0">
+          <Compass className="w-6 h-6 text-purple-400" />
+        </div>
+        <div>
+          <h4 className="text-sm font-bold tracking-widest uppercase mb-1 flex items-center gap-2">
+            Integrated Naming Convention
+          </h4>
+          <p className="text-xs sm:text-sm text-purple-300/70 leading-relaxed">
+            Movements highlighted in <span className="text-purple-400 font-medium">purple</span> pair the foundational Calisthenics term with its traditional <strong className="text-purple-300 font-medium">Yoga Asana</strong> counterpart (e.g., <em className="text-white/60 not-italic border border-white/10 bg-white/5 px-1.5 py-0.5 rounded text-[10px] uppercase ml-1">Push-Ups / Chaturanga Dandasana</em>). This synthesizes modern strength leverage with ancient yogic alignment.
+          </p>
+        </div>
+      </div>
+
       {/* Main Content */}
       <div className="space-y-16">
         {tiersData.map((tier, idx) => (
@@ -241,7 +256,7 @@ export function MovementLibrary() {
                         
                         <div className="flex flex-wrap gap-2 mt-auto">
                           {cat.moves.map(move => {
-                            const isYoga = move.toLowerCase().includes('asana');
+                            const isYoga = move.toLowerCase().match(/(asana|bandha|pranayama)/) !== null;
                             return (
                               <button
                                 key={move}
@@ -294,7 +309,7 @@ export function MovementLibrary() {
                         </div>
                         <div className="flex flex-wrap gap-3 flex-1">
                           {cat.moves.map(move => {
-                            const isYoga = move.toLowerCase().includes('asana');
+                            const isYoga = move.toLowerCase().match(/(asana|bandha|pranayama)/) !== null;
                             return (
                               <button
                                 key={move}
