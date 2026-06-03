@@ -1,0 +1,6 @@
+{
+  "name": "udyama",
+  "description": "A professional-grade calisthenics progression app with a 7-layer framework and 5 parallel pillars.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
