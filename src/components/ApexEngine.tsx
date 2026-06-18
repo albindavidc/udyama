@@ -10,10 +10,10 @@ type DayConfig = {
   color: string;
   reps: number;
   details: {
-    goal: string;
     description?: string;
     structure?: string;
     rules?: string;
+    purpose?: string[];
     exercises: { name: string; sets?: number | string; reps: number | string; total?: string }[];
   };
 };
@@ -27,8 +27,8 @@ const apexSchedule: DayConfig[] = [
     color: "from-yellow-400 to-orange-500",
     reps: 300,
     details: {
-      goal: "Speed, pacing, work capacity",
       structure: "5 rounds • 45s rest between exercises • 2 min rest between rounds",
+      purpose: ["Conditioning", "Muscular endurance", "Pacing control"],
       exercises: [
         { name: "Pushups", reps: 20 },
         { name: "Inverted Rows / Chin-Ups", reps: 10 },
@@ -45,8 +45,8 @@ const apexSchedule: DayConfig[] = [
     color: "from-red-500 to-rose-600",
     reps: 270,
     details: {
-      goal: "Muscle growth and brute strength",
       structure: "Straight sets • 60-90s rest • Tempo: 3s down, 1s pause, explode up",
+      purpose: ["Muscle hypertrophy", "Time under tension", "Strength development"],
       exercises: [
         { name: "Decline Pushups", sets: 4, reps: 25 },
         { name: "Strict Bodyweight Rows", sets: 5, reps: 10 },
@@ -63,8 +63,8 @@ const apexSchedule: DayConfig[] = [
     color: "from-orange-500 to-red-500",
     reps: 475,
     details: {
-      goal: "Stamina and heart-rate control",
       rules: "Every Minute On the Minute: Complete reps, use remaining time to rest. 5 cycles.",
+      purpose: ["Stamina", "Heart-rate control", "Recovery under fatigue"],
       exercises: [
         { name: "Diamond Pushups (Min 1)", reps: 20 },
         { name: "Chin-Ups / Rows (Min 2)", reps: 10 },
@@ -82,8 +82,8 @@ const apexSchedule: DayConfig[] = [
     color: "from-emerald-400 to-teal-500",
     reps: 0,
     details: {
-      goal: "Mobility and muscle healing",
       structure: "Walking • Stretching • Light mobility • Hydration • Sleep",
+      purpose: ["Reduce soreness", "Improve recovery", "Prepare for next training sessions"],
       exercises: []
     }
   },
@@ -95,9 +95,9 @@ const apexSchedule: DayConfig[] = [
     color: "from-purple-500 to-pink-500",
     reps: 500,
     details: {
-      goal: "Mental toughness and endurance",
       rules: "Ascending 1 to 10 reps, then descending 9 to 1 rep for all exercises.",
       structure: "Steps 1-5: 15s rest | Steps 6-10: 45s rest | Descending: 30s rest",
+      purpose: ["Mental toughness", "High-volume endurance", "Work capacity"],
       exercises: [
         { name: "Pushups", reps: "Pyramid" },
         { name: "Rows", reps: "Pyramid" },
@@ -114,8 +114,8 @@ const apexSchedule: DayConfig[] = [
     color: "from-cyan-400 to-blue-500",
     reps: 316,
     details: {
-      goal: "Fix strength imbalances",
       structure: "Straight sets • 60s rest • Rest 10s when switching sides",
+      purpose: ["Unilateral strength", "Balance", "Core stability"],
       exercises: [
         { name: "Archer Pushups", sets: 4, reps: "25 total" },
         { name: "Single-Arm Rows", sets: 4, reps: "12/arm" },
@@ -132,8 +132,8 @@ const apexSchedule: DayConfig[] = [
     color: "from-blue-400 to-indigo-500",
     reps: 0,
     details: {
-      goal: "Full recovery and adaptation",
       structure: "No training • Prioritize sleep • Eat well",
+      purpose: ["Muscle repair", "Nervous system recovery", "Long-term progress"],
       exercises: []
     }
   }
@@ -151,10 +151,7 @@ function DayDetailsBlock({ activeDayObj, daysOfWeek }: { activeDayObj: DayConfig
         Day {activeDayObj.day} ({daysOfWeek[activeDayObj.day - 1]}) • {activeDayObj.focus}
       </div>
       
-      <h3 className="text-3xl md:text-4xl font-black italic tracking-tighter uppercase mb-2">{activeDayObj.title}</h3>
-      <p className="text-cyan-400 font-medium mb-8 flex items-center gap-2">
-        <Target className="w-4 h-4" /> Goal: {activeDayObj.details.goal}
-      </p>
+      <h3 className="text-3xl md:text-4xl font-black italic tracking-tighter uppercase mb-8">{activeDayObj.title}</h3>
 
       <div className="space-y-8">
         {activeDayObj.details.rules && (
@@ -163,6 +160,21 @@ function DayDetailsBlock({ activeDayObj, daysOfWeek }: { activeDayObj: DayConfig
               <Flame className="w-3 h-3" /> Protocol
             </div>
             <p className="text-sm">{activeDayObj.details.rules}</p>
+          </div>
+        )}
+
+        {activeDayObj.details.purpose && activeDayObj.details.purpose.length > 0 && (
+          <div>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-3 flex items-center gap-2">
+              <Activity className="w-4 h-4 text-cyan-400" /> Purpose
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {activeDayObj.details.purpose.map((p, idx) => (
+                <span key={idx} className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg text-xs font-medium text-white/80">
+                  {p}
+                </span>
+              ))}
+            </div>
           </div>
         )}
 
