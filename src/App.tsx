@@ -4,6 +4,7 @@ import { DashboardBento } from './components/DashboardBento';
 import { LayerProgressionTree } from './components/LayerProgressionTree';
 import { PillarMatrix } from './components/PillarMatrix';
 import { HomeView } from './components/HomeView';
+import { ApexEngineView } from './components/ApexEngine';
 import { SplashScreen } from './components/SplashScreen';
 
 function HeaderStats() {
@@ -20,7 +21,7 @@ function HeaderStats() {
 }
 
 export default function App() {
-  const [view, setView] = useState<'home' | 'level' | 'matrix'>('home');
+  const [view, setView] = useState<'home' | 'library' | 'level' | 'matrix'>('home');
   const [showSplash, setShowSplash] = useState(true);
 
   return (
@@ -35,22 +36,28 @@ export default function App() {
               <h1 className="text-2xl font-bold tracking-tighter uppercase italic">udyama</h1>
             </div>
           
-          <nav className="flex gap-4 md:gap-8 text-xs font-semibold tracking-widest uppercase text-white/50">
+          <nav className="flex gap-4 md:gap-8 text-xs font-semibold tracking-widest uppercase text-white/50 overflow-x-auto pb-2 md:pb-0 no-scrollbar w-full md:w-auto">
             <button 
               onClick={() => setView('home')}
-              className={`transition-colors cursor-pointer pb-1 ${view === 'home' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
+              className={`transition-colors cursor-pointer pb-1 whitespace-nowrap ${view === 'home' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
             >
-              Home
+              Apex Engine
+            </button>
+            <button 
+              onClick={() => setView('library')}
+              className={`transition-colors cursor-pointer pb-1 whitespace-nowrap ${view === 'library' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
+            >
+              Library
             </button>
             <button 
               onClick={() => setView('level')}
-              className={`transition-colors cursor-pointer pb-1 ${view === 'level' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
+              className={`transition-colors cursor-pointer pb-1 whitespace-nowrap ${view === 'level' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
             >
               Level
             </button>
             <button 
               onClick={() => setView('matrix')}
-              className={`transition-colors cursor-pointer pb-1 ${view === 'matrix' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
+              className={`transition-colors cursor-pointer pb-1 whitespace-nowrap ${view === 'matrix' ? 'text-cyan-400 border-b border-cyan-400' : 'hover:text-white'}`}
             >
               Matrix
             </button>
@@ -63,6 +70,11 @@ export default function App() {
 
         <main className="flex-1 flex flex-col gap-6">
           {view === 'home' && (
+            <div className="animate-in fade-in duration-700 ease-out">
+              <ApexEngineView />
+            </div>
+          )}
+          {view === 'library' && (
             <div className="animate-in fade-in duration-700 ease-out">
               <HomeView />
             </div>

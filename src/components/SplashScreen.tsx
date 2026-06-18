@@ -64,7 +64,7 @@ export function SplashScreen({ isVisible, onComplete }: { isVisible: boolean, on
               <motion.span
                 key={index}
                 variants={letterVariants}
-                className="inline-block text-7xl md:text-9xl font-black tracking-tighter uppercase italic text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 pr-4"
+                className="inline-block text-5xl sm:text-7xl md:text-9xl font-black tracking-tighter uppercase italic text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 pr-2 md:pr-4"
               >
                 {char}
               </motion.span>
