@@ -1,7 +1,3 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
 # Udyama: Bodyweight Mastery & Apex Engine
 
 Welcome to **Udyama**, a comprehensive fitness and bodyweight mastery application. Designed with modern web technologies, Udyama provides a highly structured 7-Day Bodyweight Strength Program (The Apex Engine) and tools to track your progress through the layers of mastery.
