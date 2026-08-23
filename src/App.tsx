@@ -6,6 +6,7 @@ import { PillarMatrix } from './components/PillarMatrix';
 import { HomeView } from './components/HomeView';
 import { ApexEngineView } from './components/ApexEngine';
 import { SplashScreen } from './components/SplashScreen';
+import { Logo } from './components/Logo';
 
 function HeaderStats() {
   const { currentLayer } = useProgress();
@@ -32,9 +33,7 @@ export default function App() {
         <div className="animate-in fade-in duration-1000 ease-out min-h-screen pb-24 px-4 sm:px-6 w-full max-w-[1240px] mx-auto pt-6 flex flex-col gap-6">
           
           <header className="flex flex-col md:flex-row justify-between items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl px-6 md:px-8 py-4 shadow-2xl gap-6">
-            <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold tracking-tighter uppercase italic">udyama</h1>
-            </div>
+            <Logo />
           
           <nav className="flex gap-4 md:gap-8 text-xs font-semibold tracking-widest uppercase text-white/50 overflow-x-auto pb-2 md:pb-0 no-scrollbar w-full md:w-auto">
             <button 
